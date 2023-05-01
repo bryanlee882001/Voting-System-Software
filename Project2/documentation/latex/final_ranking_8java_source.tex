@@ -1,0 +1,172 @@
+\doxysection{final\+Ranking.\+java}
+\label{final_ranking_8java_source}\index{src/finalRanking.java@{src/finalRanking.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ java.lang.Math;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }finalRanking\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ Map<String,\ List<Integer>>\ finalRanking\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}\ finalRanking\ ()\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ finalRanking\ =\ checkForTie();}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}\ Map<String,\ List<Integer>>\ checkForTie\ ()\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ yesOrNo;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ finalResult;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Closed\ Party\ Listing\ (CPL)}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.entrySet());}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ totalSeats\ =\ fileSystem.numOfSeats;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ the\ last\ rank\ from\ num\ of\ seats\ is\ tie\ with\ the\ next\ one}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ totalSeats\ -\/\ 1;\ i\ <\ fileSystem.numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(entries.get(i).getValue().get(1)\ ==\ entries.get(i+1).getValue().get(1))\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(entries.get(i+1).getValue().get(1)\ ==\ entries.get(i+2).getValue().get(1))\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ more\ than\ 2\ have\ equal\ value}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ want\ to\ run\ a\ pool\ coin\ toss"{}},\textcolor{stringliteral}{"{}Pool\ Coin\ Toss"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(yesOrNo\ ==\ JOptionPane.YES\_OPTION)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ yes,\ run\ a\ pool\ coin\ toss}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalResult\ =\ poolCoinToss(i\ +\ 2);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(finalResult\ ==\ 0)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ totalSeats\ -\/\ 1;\ k++)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(k).getKey(),\ entries.get(k).getValue());}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(finalResult\ ==\ 1)\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ totalSeats\ -\/\ 1;\ k++)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(k).getKey(),\ entries.get(k).getValue());}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i+1).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ totalSeats\ -\/\ 1;\ k++)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(k).getKey(),\ entries.get(k).getValue());}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i+2).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finalRanking;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ only\ 2\ has\ equal\ value}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ want\ to\ run\ a\ fair\ coin\ toss"{}},\textcolor{stringliteral}{"{}Fair\ Coin\ Toss"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(yesOrNo\ ==\ JOptionPane.YES\_OPTION)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ yes,\ run\ a\ fair\ coin\ toss.}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalResult\ =\ fairCoinToss();\ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(finalResult\ ==\ 0)\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ totalSeats\ -\/\ 1;\ k++)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(k).getKey(),\ entries.get(k).getValue());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ totalSeats\ -\/\ 1;\ k++)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(k).getKey(),\ entries.get(i+1).getValue());}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i+1).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finalRanking;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ totalSeats;\ k++)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(k).getKey(),\ entries.get(k).getValue());}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finalRanking;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Instant\ Runoff\ Voting\ (IR)}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.entrySet());}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ there\ is\ a\ tie\ between\ the\ first\ place}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(entries.get(i).getValue().get(1)\ ==\ entries.get(i+1).getValue().get(1))\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(entries.get(i+1).getValue().get(1)\ ==\ entries.get(i+2).getValue().get(1))\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ more\ than\ 2\ has\ tie}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ want\ to\ run\ a\ pool\ coin\ toss"{}},\textcolor{stringliteral}{"{}Pool\ Coin\ Toss"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(yesOrNo\ ==\ JOptionPane.YES\_OPTION)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ run\ a\ pool\ coin\ toss\ if\ there\ is\ a\ tie}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalResult\ =\ poolCoinToss(i\ +\ 2);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(finalResult\ ==\ 0)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(finalResult\ ==\ 1)\{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i+1).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i+2).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ there\ is\ only\ 2\ has\ tie}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ want\ to\ run\ a\ fair\ coin\ toss"{}},\textcolor{stringliteral}{"{}Fair\ Coin\ Toss"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(yesOrNo\ ==\ JOptionPane.YES\_OPTION)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ run\ a\ fair\ coin\ toss\ if\ there\ is\ a\ tie}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalResult\ =\ fairCoinToss();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(finalResult\ ==\ 0)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalRanking.put(entries.get(i+1).getKey(),\ entries.get(i).getValue());}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finalRanking;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ invalid}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finalRanking;}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ fairCoinToss\ ()\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Closed\ Party\ Listing\ (CPL)}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(Math.random()\ *\ 2)\ +\ 0;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Instant\ Runoff\ Voting\ (IR)}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(Math.random()\ *\ 2)\ +\ 0;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Displays\ error\ message\ if\ an\ error\ is\ detected\ }}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ poolCoinToss\ (\textcolor{keywordtype}{int}\ range)\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Closed\ Party\ Listing\ (CPL)}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(Math.random()\ *\ range)\ +\ 0;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Instant\ Runoff\ Voting\ (IR)}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(Math.random()\ *\ range)\ +\ 0;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Displays\ error\ message\ if\ an\ error\ is\ detected\ }}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \}}
+
+\end{DoxyCode}

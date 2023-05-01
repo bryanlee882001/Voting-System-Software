@@ -1,0 +1,255 @@
+\doxysection{final\+Ranking\+Test.\+java}
+\label{final_ranking_test_8java_source}\index{src/finalRankingTest.java@{src/finalRankingTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ org.junit.Test;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.Assert.*;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }finalRankingTest\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ @Test}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkfortie()\ performs\ pool\ coin\ toss\ when\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test1\_checkForTie()\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ fileSystem.numOfSeats\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ seats\ to\ 5}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 9\ arbitrary\ ballots}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ rankings\ class\ and\ count\ ballots\ for\ each\ candidate}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Democratic"{},(6,3)\ |}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Republican"{},(6,3)\ |}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Reform"{},(6,3)\ \ \ \ \ |}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Green"{},\ (9,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ finalrankings\ class\ to\ check\ for\ tie\ }}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ finalRanking\ fr\ =\ \textcolor{keyword}{new}\ finalRanking();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ checkForTie()\ function\ was\ executed}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckForTieWasRun\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.checkForTie();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckForTieWasRun\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ assertTrue(CheckForTieWasRun\ );}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ poolCoinToss()\ was\ run\ when\ more\ than\ two\ parties\ have\ equal\ votes}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ poolCoinTossWasRun\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.poolCoinToss(3);\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ \ poolCoinTossWasRun\ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ poolCoinToss\ was\ run\ because\ a\ tie\ exist\ between\ more\ than\ two\ parties\ }}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ assertTrue(poolCoinTossWasRun);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ fairCoinToss()\ was\ not\ run\ given\ that\ poolCoinToss()\ was\ run\ }}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ fairCoinTossWasRun\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.fairCoinToss();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ fairCoinTossWasRun\ =\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fairCoinToss\ was\ not\ run\ because\ a\ tie\ exist\ between\ more\ than\ two\ parties\ }}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ assertFalse(fairCoinTossWasRun);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ @Test}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkfortie()\ performs\ fair\ coin\ toss\ when\ election\ type\ is\ IR}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test2\_checkForTie()\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 8;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 4\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 1,\ 2));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 1,\ 2));}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 1,\ 2));}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ rankings\ class\ and\ count\ ballots\ for\ each\ candidate}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Cedric"{},(0,0,2,6)\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Bryan"{},(0,4,3,1)\ \ \ \ \ \ \ \ \ \ \ \ |\ }}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Sherryl"{},(0,4,3,1)\ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ finalrankings\ class\ to\ check\ for\ tie\ }}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ finalRanking\ fr\ =\ \textcolor{keyword}{new}\ finalRanking();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ checkForTie()\ function\ was\ executed}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckForTieWasRun\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.checkForTie();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckForTieWasRun\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ assertTrue(CheckForTieWasRun);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ poolCoinToss()\ was\ not\ run\ given\ that\ there\ is\ only\ a\ tie\ between\ two\ parties}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ poolCoinTossWasRun\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.poolCoinToss(3);\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ \ poolCoinTossWasRun\ =\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ poolCoinToss\ was\ run\ because\ a\ tie\ exist\ between\ two\ parties\ }}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ assertFalse(poolCoinTossWasRun);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ fairCoinToss()\ was\ run\ given\ that\ there\ is\ only\ a\ tie\ between\ two\ parties}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ fairCoinTossWasRun\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.fairCoinToss();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ fairCoinTossWasRun\ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fairCoinToss\ was\ run\ because\ a\ tie\ exist\ between\ two\ parties\ }}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ assertTrue(fairCoinTossWasRun);}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ @Test}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkfortie()\ does\ not\ perform\ any\ toss\ given\ that\ there\ is\ no\ tie\ when\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test3\_checkForTie()\{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ fileSystem.numOfSeats\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ seats\ to\ 5}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 9\ arbitrary\ ballots}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ rankings\ class\ and\ count\ ballots\ for\ each\ candidate}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Democratic"{},(5,4)\ |}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Republican"{},(7,2)\ |}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Reform"{},(6,3)\ \ \ \ \ |}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Green"{},\ (9,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ finalrankings\ class\ to\ check\ for\ tie\ }}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ finalRanking\ fr\ =\ \textcolor{keyword}{new}\ finalRanking();}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ checkForTie()\ function\ was\ executed}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckForTieWasRun\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.checkForTie();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckForTieWasRun\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ assertTrue(CheckForTieWasRun\ );}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ poolCoinToss()\ was\ not\ run\ given\ there\ is\ no\ tie}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ poolCoinTossWasRun\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.poolCoinToss(3);\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ \ poolCoinTossWasRun\ =\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ assertFalse(poolCoinTossWasRun);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ fairCoinToss()\ was\ not\ run\ given\ there\ is\ no\ tie}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ fairCoinTossWasRun\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fr.fairCoinToss();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ fairCoinTossWasRun\ =\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ assertFalse(fairCoinTossWasRun);}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ @Test}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkfortie()\ does\ not\ perform\ any\ toss\ if\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test4\_fairCoinToss()\{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 8;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 4\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 1,\ 2));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 1,\ 2));}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 1,\ 2));}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ rankings\ class\ and\ count\ ballots\ for\ each\ candidate}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Cedric"{},(0,0,2,6)\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Bryan"{},(0,4,3,1)\ \ \ \ \ \ \ \ \ \ \ \ |\ }}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Sherryl"{},(0,4,3,1)\ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ finalrankings\ class\ to\ check\ for\ tie\ }}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ finalRanking\ fr\ =\ \textcolor{keyword}{new}\ finalRanking();}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ fairCoinToss\ returns\ a\ value\ between\ 0\ and\ 1\ indicating\ the\ winning\ party}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ fr.fairCoinToss();}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ assertTrue(result\ >=\ 0\ \&\&\ result\ <=\ 1);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ @Test}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkfortie()\ does\ not\ perform\ any\ toss\ if\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test5\_poolCoinToss()\{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ fileSystem.numOfSeats\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ seats\ to\ 5}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 9\ arbitrary\ ballots}}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ rankings\ class\ and\ count\ ballots\ for\ each\ candidate}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Democratic"{},(6,3)\ |}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Republican"{},(6,3)\ |}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Reform"{},(6,3)\ \ \ \ \ |}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Green"{},\ (9,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ an\ object\ of\ the\ finalrankings\ class\ to\ check\ for\ tie\ }}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ finalRanking\ fr\ =\ \textcolor{keyword}{new}\ finalRanking();}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ fairCoinToss\ returns\ a\ value\ between\ 0\ and\ 1\ indicating\ the\ winning\ party}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ fr.poolCoinToss(3);}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ assertTrue(result\ >=\ 0\ \&\&\ result\ <=\ 2);}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ }
+\DoxyCodeLine{00263\ \}}
+
+\end{DoxyCode}

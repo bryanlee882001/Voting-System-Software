@@ -1,0 +1,112 @@
+\doxysection{count\+Ballot\+Test.\+java}
+\label{count_ballot_test_8java_source}\index{src/countBallotTest.java@{src/countBallotTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.Assert.*;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ org.junit.Test;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }countBallotTest\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ @Test}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ countBallot()\ returns\ the\ correct\ TotalBallots\ list\ and\ ballotWithName\ map\ for\ CPL}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test1\_countBallot()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 7;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 7\ arbitrary\ ballots}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,0,1));}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ the\ countBallot\ class\ to\ count\ totalBallots\ and\ ballotsWithName}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ countBallot\ ballotCount\ =\ \textcolor{keyword}{new}\ countBallot();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedTotalBallots\ is\ created\ and\ used\ to\ compare\ results\ with\ ballotCount.totalBallots\ }}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ List<List<Integer>>\ expectedTotalBallots\ =\ Arrays.asList(}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (index\ 0:\ number\ of\ zeros\ in\ all\ ballots,\ index\ 1:\ number\ of\ ones\ in\ all\ ballots)}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(5,2),}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(4,3),}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(6,1),}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(6,1)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ totalBallots\ list\ has\ been\ calculated\ correctly\ using\ assertEquals}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ assertEquals(expectedTotalBallots,\ ballotCount.totalBallots);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedBallotWithName\ is\ created\ and\ used\ to\ compare\ results\ with\ ballotCount.ballotWithName}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedBallotWithName\ =\ \textcolor{keyword}{new}\ HashMap<>();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Democratic"{}},\ Arrays.asList(5,2));}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Republican"{}},\ Arrays.asList(4,3));}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Reform"{}},\ Arrays.asList(6,1));}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Green"{}},\ Arrays.asList(6,1));}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ballotWithName\ list\ has\ been\ calculated\ correctly\ using\ assertEquals}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ assertEquals(expectedBallotWithName,\ ballotCount.ballotWithName);}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ @Test}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ The\ second\ test\ checks\ that\ countBallot()\ returns\ the\ correct\ TotalBallots\ list\ and\ ballotWithName\ map\ for\ IR}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test2\_countBallot()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 2,\ 3));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 4\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 3,\ 2));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 2,\ 3));}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ the\ countBallot\ class\ to\ count\ totalBallots\ and\ ballotsWithName}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ countBallot\ ballotCount\ =\ \textcolor{keyword}{new}\ countBallot();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedTotalBallots\ is\ created\ and\ used\ to\ compare\ results\ with\ ballotCount.totalBallots\ }}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ List<List<Integer>>\ expectedTotalBallots\ =\ Arrays.asList(}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (index\ 0:\ number\ of\ zeros\ in\ all\ ballots,\ index\ 1:\ number\ of\ ones\ in\ all\ ballots)}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(0,\ 3,\ 1,\ 0),}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(0,\ 0,\ 2,\ 2),}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(0,\ 1,\ 1,\ 2)}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ totalBallots\ list\ has\ been\ calculated\ correctly\ using\ assertEquals}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ assertEquals(expectedTotalBallots,\ ballotCount.totalBallots);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedBallotWithName\ is\ created\ and\ used\ to\ compare\ results\ with\ ballotCount.ballotWithName}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedBallotWithName\ =\ \textcolor{keyword}{new}\ HashMap<>();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}},\ Arrays.asList(0,\ 3,\ 1,\ 0));}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Bryan\ Lee"{}},\ Arrays.asList(0,\ 0,\ 2,\ 2));}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ expectedBallotWithName.put(\textcolor{stringliteral}{"{}Cedric\ Tan"{}},\ Arrays.asList(0,\ 1,\ 1,\ 2));}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ballotWithName\ list\ has\ been\ calculated\ correctly\ using\ assertEquals}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ assertEquals(expectedBallotWithName,\ ballotCount.ballotWithName);}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ @Test}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ countBallot()\ returns\ an\ empty\ TotalBallots\ list\ and\ ballotWithName\ map\ when\ election\ type\ is\ neither\ CPL\ or\ IR}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test3\_countBallot()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}OPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ Open\ Party\ List\ }}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedTotalBallots\ is\ created\ and\ used\ to\ compare\ results\ with\ ballotCount.totalBallots\ }}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ List<List<Integer>>\ expectedTotalBallots\ =\ Arrays.asList();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ countBallot\ ballotCount\ =\ \textcolor{keyword}{new}\ countBallot();}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Invalid\ election\ type\ means\ that\ ballots\ will\ not\ be\ counted\ therefore\ the\ array\ list\ is\ empty}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ assertEquals(expectedTotalBallots,ballotCount.totalBallots);\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedBallotWithName\ is\ created\ and\ used\ to\ compare\ results\ with\ ballotCount.ballotWithName}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedBallotWithName\ =\ \textcolor{keyword}{new}\ HashMap<>();}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Invalid\ election\ type\ means\ that\ ballots\ with\ name\ will\ not\ be\ counted\ therefore\ the\ map\ is\ empty\ }}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ assertEquals(expectedBallotWithName,\ ballotCount.ballotWithName);}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+
+\end{DoxyCode}

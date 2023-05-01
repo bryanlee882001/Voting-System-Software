@@ -1,0 +1,162 @@
+\doxysection{display\+Results\+Test.\+java}
+\label{display_results_test_8java_source}\index{src/displayResultsTest.java@{src/displayResultsTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ org.junit.Test;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.Assert.*;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }displayResultsTest\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ @Test}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ generateAuditFile()\ is\ called\ to\ export\ an\ audit\ file\ when\ the\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test1\_generateAuditFile()\{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ fileSystem.numOfSeats\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ seats\ to\ 5}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 5}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 5\ arbitrary\ ballots}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Creates\ a\ new\ object\ of\ the\ displayResults\ class\ }}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ displayResults\ dR\ =\ \textcolor{keyword}{new}\ displayResults();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Democratic"{},(3,2)\ |}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Republican"{},(2,3)\ |}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Reform"{},(5,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Green"{},\ (5,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ boolean}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckIfAuditFileIsGenerated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ if\ the\ generateAuditFile()\ method\ is\ called\ using\ try\ and\ catch\ }}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ dR.generateAuditFile();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ dR.showResults();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckIfAuditFileIsGenerated\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ assertFalse(CheckIfAuditFileIsGenerated);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ @Test}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ generateAuditFile()\ is\ called\ to\ export\ an\ audit\ file\ when\ the\ election\ type\ is\ IR}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test2\_generateAuditFile()\{}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 5}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 5\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Creates\ a\ new\ object\ of\ the\ displayResults\ class\ }}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ displayResults\ dR\ =\ \textcolor{keyword}{new}\ displayResults();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Cedric"{},(0,0,2,3)\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Bryan"{},(0,1,3,1)\ \ \ \ \ \ \ \ \ \ \ \ |\ }}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Sherryl"{},(0,4,0,1)\ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ boolean}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckIfAuditFileIsGenerated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ if\ the\ generateAuditFile()\ method\ is\ called\ using\ try\ and\ catch\ }}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ dR.generateAuditFile();\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ dR.showResults();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckIfAuditFileIsGenerated\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ assertTrue(CheckIfAuditFileIsGenerated);}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ @Test}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ showResults()\ is\ called\ to\ display\ the\ election\ results\ when\ the\ election\ type\ is\ IR}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test3\_showResults()\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ fileSystem.numOfSeats\ =\ 6;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ seats\ to\ 4}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 5}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 5\ arbitrary\ ballots}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Creates\ a\ new\ object\ of\ the\ displayResults\ class\ }}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ displayResults\ dR\ =\ \textcolor{keyword}{new}\ displayResults();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Democratic"{},(3,2)\ |}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Republican"{},(2,3)\ |}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Reform"{},(5,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Green"{},\ (5,0)\ \ \ \ \ |}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ boolean}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckIfResultsAreDisplayed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ if\ the\ showResults()\ method\ is\ called\ using\ try\ and\ catch\ }}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ dR.showResults();\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dR.generateAuditFile();\}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckIfResultsAreDisplayed\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ assertFalse(CheckIfResultsAreDisplayed);}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ @Test}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ showResults()\ is\ called\ to\ display\ the\ election\ results\ when\ the\ election\ type\ is\ IR}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test4\_showResults()\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 5;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 5}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 5\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Creates\ a\ new\ object\ of\ the\ displayResults\ class\ }}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ displayResults\ dR\ =\ \textcolor{keyword}{new}\ displayResults();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ Results:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Cedric"{},(0,0,2,3)\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Bryan"{},(0,1,3,1)\ \ \ \ \ \ \ \ \ \ \ \ |\ }}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ |\ "{}Sherryl"{},(0,4,0,1)\ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ boolean}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ CheckIfResultsAreDisplayed=\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ if\ the\ showResults()\ method\ is\ called\ using\ try\ and\ catch\ }}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ dR.showResults();\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ CheckIfResultsAreDisplayed\ \ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ assertTrue(CheckIfResultsAreDisplayed);}
+\DoxyCodeLine{00167\ \ \ \ \ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \}}
+\DoxyCodeLine{00170\ }
+
+\end{DoxyCode}

@@ -1,0 +1,220 @@
+\doxysection{file\+System.\+java}
+\label{file_system_8java_source}\index{src/fileSystem.java@{src/fileSystem.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ java.io.*;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{00004\ \textcolor{keyword}{import}\ javax.swing.JFileChooser;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }fileSystem\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ Instance\ variables\ that\ are\ used\ in\ fileSystem\ class}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ String\ electionType;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ numOfCandidates;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ List<String>\ candidates\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ numOfSeats;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ numOfVotes;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ List<List<Integer>>\ ballot\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ List<List<String>>\ candidatesList\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ fileCount\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}\ fileSystem()\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ fileSystemRead();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ have\ other\ ballot\ files"{}},\textcolor{stringliteral}{"{}Multiple\ file"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(yesOrNo\ ==\ JOptionPane.YES\_OPTION)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ fileSystemRead();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ have\ other\ ballot\ files"{}},\textcolor{stringliteral}{"{}Multiple\ file"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}You\ have\ a\ total\ of\ "{}}\ +\ fileCount\ +\ \textcolor{stringliteral}{"{}\ files\ opened."{}},\textcolor{stringliteral}{"{}INFO\ MESSAGE"{}},JOptionPane.INFORMATION\_MESSAGE);}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ fileSystemRead()\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ JFileChooser\ fileChooser\ =\ \textcolor{keyword}{new}\ JFileChooser();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ fileChooser.showOpenDialog(\textcolor{keyword}{null});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ selected\ file\ to\ see\ if\ approve\ (yes,\ ok)\ is\ chosen}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ ==\ JFileChooser.APPROVE\_OPTION)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ File\ selectedFile\ =\ fileChooser.getSelectedFile();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Opens\ selected\ file\ }}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ openFile(selectedFile);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}There\ is\ an\ error\ opening\ the\ file."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ openFile(File\ fileName)\ \{}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ checks\ if\ file\ format\ is\ correct}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(checkFileFormat(fileName))\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ file\ is\ open."{}},\textcolor{stringliteral}{"{}INFO\ MESSAGE"{}},JOptionPane.INFORMATION\_MESSAGE);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ readFile(fileName);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Displays\ error\ message\ if\ an\ error\ is\ detected}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}There\ is\ an\ error\ opening\ the\ file."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{boolean}\ checkFileFormat\ (File\ fileName)\ \{}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ checks\ if\ file\ type\ is\ a\ .csv\ file\ type}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(getFileExtension(fileName).equals(\textcolor{stringliteral}{"{}csv"{}}))\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fileName\ ==\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ readFile\ (File\ fileName)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ lines\ inside\ CSV\ file\ }}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Variables\ to\ store\ information\ that\ is\ read\ from\ CSV\ file}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileCount\ ==\ 0)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ They\ read\ the\ first\ file}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BufferedReader\ file\ =\ \textcolor{keyword}{new}\ BufferedReader(\textcolor{keyword}{new}\ FileReader(fileName));}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ electionType\ =\ file.readLine();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfCandidates\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ allCandidates\ =\ file.readLine();}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ String[]\ subCandidates\ =\ allCandidates.split("{},\ "{});}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ candidates.addAll(Arrays.asList(file.readLine().split(\textcolor{stringliteral}{"{},\ "{}})));}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ in\ values\ based\ on\ election\ type}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ List<String>\ subCandidatesList\ =\ new\ ArrayList<>(file.readLine());}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ candidatesList.add(i,\ Arrays.asList(file.readLine()));}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfSeats\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfVotes\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfVotes\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Invalid\ election\ type}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ CurrentLine;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ While\ loop\ to\ read\ in\ number\ of\ candidates\ from\ CSV\ file\ }}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((CurrentLine\ =\ file.readLine())\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Splits\ the\ line\ into\ array\ of\ strings\ based\ on\ commas\ }}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ []\ fileLine\ =\ CurrentLine.split(\textcolor{stringliteral}{"{},"{}},\ -\/1);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Integer>\ subBallot\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adds\ the\ candidates'\ ranking\ into\ ballot\ array\ }}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileLine[i]\ !=\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subBallot.add(Integer.parseInt(fileLine[i]));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subBallot.add(0);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ballot.add(subBallot);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Close\ file\ }}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ count\ variable\ for\ the\ number\ of\ files\ opened}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileCount\ ++;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(fileCount\ >\ 0)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ other\ files}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BufferedReader\ file\ =\ \textcolor{keyword}{new}\ BufferedReader(\textcolor{keyword}{new}\ FileReader(fileName));}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ readLine\ of\ new\ file\ to\ check\ if\ the\ header\ is\ identical}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ electionTypeNew\ =\ file.readLine();}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numOfCandidatesNew\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<String>\ candidatesNew\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ candidatesNew.addAll(Arrays.asList(file.readLine().split(\textcolor{stringliteral}{"{},\ "{}})));}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(electionTypeNew.equals(electionType)\ \&\&\ numOfCandidates\ ==\ numOfCandidatesNew\ \&\&\ candidatesNew.equals(candidates))}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ in\ values\ based\ on\ election\ type}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Closed\ Party\ Listing\ (CPL)}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<List<String>>\ candidatesListNew\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ candidatesListNew.add(i,\ Arrays.asList(file.readLine()));}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numOfSeatsNew\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numOfVotesNew\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Instant\ Runoff\ Voting\ (IR)}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numOfVotesNew\ =\ Integer.parseInt(file.readLine());}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ invalid}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ CurrentLine;}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ While\ loop\ to\ read\ in\ number\ of\ candidates\ from\ CSV\ file\ }}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((CurrentLine\ =\ file.readLine())\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Splits\ the\ line\ into\ array\ of\ strings\ based\ on\ commas\ }}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ []\ fileLine\ =\ CurrentLine.split(\textcolor{stringliteral}{"{},"{}},\ -\/1);}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Integer>\ subBallot\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adds\ the\ candidates'\ ranking\ into\ ballot\ array\ }}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileLine[i]\ !=\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subBallot.add(Integer.parseInt(fileLine[i]));}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subBallot.add(0);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ballot.add(subBallot);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Close\ file\ }}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ count\ variable\ for\ the\ number\ of\ files\ opened}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileCount++;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ file\ does\ not\ have\ the\ same\ header."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Displays\ error\ message\ if\ an\ error\ is\ detected\ }}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}There\ is\ an\ error\ opening\ the\ file."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ String\ getFileExtension(File\ fullName)\ \{}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ String\ fileName\ =\ fullName.getName();}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dotIndex\ =\ fileName.lastIndexOf(\textcolor{charliteral}{'.'});}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ string\ indicating\ file\ type\ after\ "{}."{}\ in\ file\ name}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (dotIndex\ ==\ -\/1)\ ?\ \textcolor{stringliteral}{"{}"{}}\ :\ fileName.substring(dotIndex\ +\ 1);}
+\DoxyCodeLine{00249\ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \}}
+
+\end{DoxyCode}

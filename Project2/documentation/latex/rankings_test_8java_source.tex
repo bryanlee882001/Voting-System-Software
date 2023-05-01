@@ -1,0 +1,169 @@
+\doxysection{rankings\+Test.\+java}
+\label{rankings_test_8java_source}\index{src/rankingsTest.java@{src/rankingsTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ org.junit.Test;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.Assert.*;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }rankingsTest\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ @Test\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkRanking()\ sorts\ each\ candidate\ based\ on\ votes\ for\ CPL\ election\ }}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test1\_checkRankingsTest()\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 7;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 7\ arbitrary\ ballots}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedRanking\ is\ created\ and\ used\ to\ compare\ results\ with\ actualRanking\ to\ determine\ if\ ranking\ is\ correct}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedRanking\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Republican"{}},\ Arrays.asList(3,4));}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Democratic"{}},\ Arrays.asList(5,2));}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Reform"{}},\ Arrays.asList(6,1));}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Green"{}},\ Arrays.asList(7,0));}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ rankings\ class\ and\ check\ ranking\ for\ all\ candidates}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ actualRanking\ =\ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ranking\ for\ each\ candidate\ has\ been\ determined\ correctly}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ assertEquals(expectedRanking,\ actualRanking);}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ @Test}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkRanking()\ sorts\ each\ candidate\ based\ on\ votes\ for\ IR\ election\ }}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test2\_checkRankingsTest()\{}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 4\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 3,\ 2));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedRanking\ is\ created\ and\ used\ to\ compare\ results\ with\ actualRanking\ to\ determine\ if\ ranking\ is\ correct}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedRanking\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}},\ Arrays.asList(0,\ 3,\ 1,\ 0));}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Bryan\ Lee"{}},\ Arrays.asList(0,\ 0,\ 2,\ 2));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Cedric\ Tan"{}},\ Arrays.asList(0,\ 1,\ 1,\ 2));}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ rankings\ class\ and\ check\ ranking\ for\ all\ candidates}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ actualRanking\ =\ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ranking\ for\ each\ candidate\ has\ been\ determined\ correctly}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ assertEquals(expectedRanking,\ actualRanking);}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ @Test}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkRanking()\ sorts\ each\ candidate\ based\ on\ votes\ for\ CPL\ election\ }}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test3\_checkRanking()\{}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}CPL"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ parties\ to\ 4}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 7;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ fileSystem.candidates.addAll(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\textcolor{stringliteral}{"{}Republican"{}},\textcolor{stringliteral}{"{}Reform"{}},\textcolor{stringliteral}{"{}Green"{}}));\ \ \ \textcolor{comment}{//\ add\ parties}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 7\ arbitrary\ ballots}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,0,1,0));}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,0,0,0));}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(0,1,0,0));}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedResultsAfterCheckingMajority\ is\ created\ and\ used\ to\ compare\ with\ actual\ results\ after\ checking\ for\ Majority}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedRanking\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Republican"{}},\ Arrays.asList(3,4));}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Democratic"{}},\ Arrays.asList(5,2));}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Reform"{}},\ Arrays.asList(6,1));}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ expectedRanking.put(\textcolor{stringliteral}{"{}Green"{}},\ Arrays.asList(7,0));}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ rankings\ class\ and\ check\ ranking\ for\ all\ candidates}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ actualRanking\ =\ rank.checkRanking(countBallot.ballotWithName);\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ranking\ for\ each\ candidate\ has\ been\ determined\ correctly\ after\ checking\ for\ Majority}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ assertEquals(expectedRanking,\ actualRanking);}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ @Test}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkMajority()\ finds\ a\ majority\ among\ the\ candidates\ for\ IR\ election}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test4\_checkMajority()\{}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 9}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 9\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 3,\ 2));}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 3,\ 2));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 1,\ 3));}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 3,\ 2));}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedResultsAfterCheckingMajority\ is\ created\ and\ used\ to\ compare\ with\ actual\ results\ after\ checking\ for\ Majority}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedResultsAfterCheckingMajority\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ expectedResultsAfterCheckingMajority.put(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}},\ Arrays.asList(0,\ 0,\ 3,\ 3));}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ expectedResultsAfterCheckingMajority.put(\textcolor{stringliteral}{"{}Bryan\ Lee"{}},\ Arrays.asList(0,\ 6,\ 3,\ 3));}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ expectedResultsAfterCheckingMajority.put(\textcolor{stringliteral}{"{}Cedric\ Tan"{}},\ Arrays.asList(0,\ 0,\ 3,\ 3));}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ rankings\ class\ and\ check\ for\ majority}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ rank.checkMajority(countBallot.ballotWithName);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ranking\ for\ each\ candidate\ has\ been\ determined\ correctly\ after\ checking\ for\ Majority}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ assertEquals(expectedResultsAfterCheckingMajority,\ countBallot.ballotWithName);}
+\DoxyCodeLine{00147\ \ \ \ \ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ @Test}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\ This\ test\ case\ checks\ if\ checkMajority()\ finds\ a\ majority\ among\ the\ candidates\ for\ IR\ election}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test5\_checkMajority()\{}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ fileSystem.electionType\ =\ \textcolor{stringliteral}{"{}IR"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ election\ type\ to\ IR}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ fileSystem.numOfCandidates\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ candidates\ to\ 3}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ fileSystem.numOfVotes\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ votes\ to\ 4}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Cedric\ Tan"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ first\ candidate\ }}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Bryan\ Lee"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ second\ candidate\ }}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ fileSystem.candidates.add(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ third\ candidate\ }}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ 4\ arbitrary\ ballots\ with\ rankings}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(2,\ 3,\ 1));}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(3,\ 2,\ 1));}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ fileSystem.ballot.add(Arrays.asList(1,\ 3,\ 2));}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expectedResultsAfterCheckingMajority\ is\ created\ and\ used\ to\ compare\ with\ actual\ results\ after\ checking\ for\ Majority}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ Map<String,\ List<Integer>>\ expectedResultsAfterCheckingMajority\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ expectedResultsAfterCheckingMajority.put(\textcolor{stringliteral}{"{}Sherryl\ Ooi"{}},\ Arrays.asList(0,\ 3,\ 1,\ 0));}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ expectedResultsAfterCheckingMajority.put(\textcolor{stringliteral}{"{}Bryan\ Lee"{}},\ Arrays.asList(0,\ 0,\ 2,\ 2));}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ expectedResultsAfterCheckingMajority.put(\textcolor{stringliteral}{"{}Cedric\ Tan"{}},\ Arrays.asList(0,\ 1,\ 1,\ 2));}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ object\ of\ rankings\ class\ and\ check\ for\ majority}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ rankings\ rank\ =\ \textcolor{keyword}{new}\ rankings();}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ rank.checkMajority(countBallot.ballotWithName);}
+\DoxyCodeLine{00173\ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ ranking\ for\ each\ candidate\ has\ been\ determined\ correctly\ after\ checking\ for\ Majority}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ assertEquals(expectedResultsAfterCheckingMajority,\ countBallot.ballotWithName);}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \}}
+
+\end{DoxyCode}

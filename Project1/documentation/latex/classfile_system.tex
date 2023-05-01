@@ -1,0 +1,96 @@
+\hypertarget{classfile_system}{}\doxysection{file\+System Class Reference}
+\label{classfile_system}\index{fileSystem@{fileSystem}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfile_system_aebc3736bc6ce1e573df22c3296b79984}{file\+System}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classfile_system_ac6ea42f99bf8cb26f75e3ae576c4dabe}{open\+File}} (File file\+Name)
+\item 
+static boolean \mbox{\hyperlink{classfile_system_a270ccb82a9e47e2920af6ecf254833d0}{check\+File\+Format}} (File file\+Name)
+\item 
+static void \mbox{\hyperlink{classfile_system_a596347fb5fc592b59d2343190792ff9c}{read\+File}} (File file\+Name)
+\item 
+static String \mbox{\hyperlink{classfile_system_a06ecb2094eef494482f4eeea10091469}{get\+File\+Extension}} (File full\+Name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classfile_system}{file\+System}} program implements functions that are related to perform file handling within the voting system software.
+
+\begin{DoxyAuthor}{Author}
+Bryan Yen Sheng Lee 
+
+Cedric Tan Yee Shuen 
+
+Sherryl Ooi Shi Tyng 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 @ since 2023-\/03-\/19 
+\end{DoxyVersion}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classfile_system_aebc3736bc6ce1e573df22c3296b79984}\label{classfile_system_aebc3736bc6ce1e573df22c3296b79984}} 
+\index{fileSystem@{fileSystem}!fileSystem@{fileSystem}}
+\index{fileSystem@{fileSystem}!fileSystem@{fileSystem}}
+\doxysubsubsection{\texorpdfstring{fileSystem()}{fileSystem()}}
+{\footnotesize\ttfamily file\+System.\+file\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A constructor of the \mbox{\hyperlink{classfile_system}{file\+System}} class that takes in no parameter and will open the selected files. It displays a message indicating if the file can be opened. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classfile_system_a270ccb82a9e47e2920af6ecf254833d0}\label{classfile_system_a270ccb82a9e47e2920af6ecf254833d0}} 
+\index{fileSystem@{fileSystem}!checkFileFormat@{checkFileFormat}}
+\index{checkFileFormat@{checkFileFormat}!fileSystem@{fileSystem}}
+\doxysubsubsection{\texorpdfstring{checkFileFormat()}{checkFileFormat()}}
+{\footnotesize\ttfamily static boolean file\+System.\+check\+File\+Format (\begin{DoxyParamCaption}\item[{File}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function of the \mbox{\hyperlink{classfile_system}{file\+System}} class that reads in a file type and checks if the file format is correct. 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ a file type indicating the file name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean indicating if file format is correct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classfile_system_a06ecb2094eef494482f4eeea10091469}\label{classfile_system_a06ecb2094eef494482f4eeea10091469}} 
+\index{fileSystem@{fileSystem}!getFileExtension@{getFileExtension}}
+\index{getFileExtension@{getFileExtension}!fileSystem@{fileSystem}}
+\doxysubsubsection{\texorpdfstring{getFileExtension()}{getFileExtension()}}
+{\footnotesize\ttfamily static String file\+System.\+get\+File\+Extension (\begin{DoxyParamCaption}\item[{File}]{full\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function that takes in a file type and gets the file extension 
+\begin{DoxyParams}{Parameters}
+{\em full\+Name} & -\/ a file type indicating the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string indicating file type after \char`\"{}.\char`\"{} in file name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classfile_system_ac6ea42f99bf8cb26f75e3ae576c4dabe}\label{classfile_system_ac6ea42f99bf8cb26f75e3ae576c4dabe}} 
+\index{fileSystem@{fileSystem}!openFile@{openFile}}
+\index{openFile@{openFile}!fileSystem@{fileSystem}}
+\doxysubsubsection{\texorpdfstring{openFile()}{openFile()}}
+{\footnotesize\ttfamily static void file\+System.\+open\+File (\begin{DoxyParamCaption}\item[{File}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function of the \mbox{\hyperlink{classfile_system}{file\+System}} class that reads in a file type and opens the file if the file format is correct. It displays a message indicating if the file can be opened. 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ a file type indicating the file name ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classfile_system_a596347fb5fc592b59d2343190792ff9c}\label{classfile_system_a596347fb5fc592b59d2343190792ff9c}} 
+\index{fileSystem@{fileSystem}!readFile@{readFile}}
+\index{readFile@{readFile}!fileSystem@{fileSystem}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily static void file\+System.\+read\+File (\begin{DoxyParamCaption}\item[{File}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function of the \mbox{\hyperlink{classfile_system}{file\+System}} class that takes in a file type and reads the CSV file starting from the first line to indicate election type. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/file\+System.\+java\end{DoxyCompactItemize}

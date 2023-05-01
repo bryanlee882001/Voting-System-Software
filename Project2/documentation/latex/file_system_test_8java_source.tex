@@ -1,0 +1,193 @@
+\doxysection{file\+System\+Test.\+java}
+\label{file_system_test_8java_source}\index{src/fileSystemTest.java@{src/fileSystemTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.Assert.*;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ org.junit.Test;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.io.*;}
+\DoxyCodeLine{00004\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }fileSystemTest\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ @Test}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ getFileExtension()\ returns\ the\ correct\ file\ extension}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test1\_getFileExtension()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ File\ testFile1\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.csv"{}});}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ "{}csv"{}\ as\ the\ outcome}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}csv"{}},\ fileSystem.getFileExtension(testFile1));}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ @Test}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ getFileExtension()\ returns\ the\ correct\ file\ extension}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test2\_getFileExtension()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ File\ testFile2\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.pdf"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ "{}pdf"{}\ as\ the\ outcome}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}pdf"{}},\ fileSystem.getFileExtension(testFile2));}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ @Test}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ getFileExtension()\ returns\ the\ correct\ file\ extension}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test3\_getFileExtension()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ File\ testFile3\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfiledocs"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ "{}"{}\ as\ the\ outcome}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}"{}},\ fileSystem.getFileExtension(testFile3));}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ @Test}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ getFileExtension()\ returns\ the\ correct\ file\ extension}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test4\_getFileExtension()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ File\ testFile4\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ "{}"{}\ as\ the\ outcome}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}"{}},\ fileSystem.getFileExtension(testFile4));}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ @Test}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ getFileExtension()\ returns\ the\ correct\ file\ extension}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test5\_getFileExtension()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ File\ testFile5\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.csv.csv"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ "{}csv.csv"{}\ as\ the\ outcome}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}csv"{}},\ fileSystem.getFileExtension(testFile5));}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ @Test}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ getFileExtension()\ returns\ the\ correct\ file\ extension}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test6\_getFileExtension()\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ File\ testFile6\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.."{}});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ "{}"{}\ as\ the\ outcome}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}"{}},\ fileSystem.getFileExtension(testFile6));}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ @Test}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ checkFileFormat()\ returns\ boolean\ indicating\ whether\ file\ format\ is\ correct}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test7\_checkFileFormat()\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ File\ testFile7\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.csv"{}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ True\ as\ the\ outcome}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{keyword}{true},\ fileSystem.checkFileFormat(testFile7));}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ @Test}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ checkFileFormat()\ returns\ boolean\ indicating\ whether\ file\ format\ is\ correct}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test8\_checkFileFormat()\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ File\ testFile8\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.pdf"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ False\ as\ the\ outcome}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{keyword}{false},\ fileSystem.checkFileFormat(testFile8));}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ @Test}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ checkFileFormat()\ returns\ boolean\ indicating\ whether\ file\ format\ is\ correct}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test9\_checkFileFormat()\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ File\ testFile9\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.."{}});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ False\ as\ the\ outcome}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{keyword}{false},\ fileSystem.checkFileFormat(testFile9));}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ @Test}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ checkFileFormat()\ returns\ boolean\ indicating\ whether\ file\ format\ is\ correct}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test10\_checkFileFormat()\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ File\ testFile10\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}testfile.csv.csv"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expects\ True\ as\ the\ outcome}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{keyword}{true},\ fileSystem.checkFileFormat(testFile10));}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ @Test}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ readFile()\ reads\ and\ returns\ correct\ information\ based\ on\ election\ file}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test11\_readFile()\ \textcolor{keywordflow}{throws}\ IOException\{}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ temporary\ csv\ fie\ containing\ election\ information\ }}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ File\ testFile11\ =\ File.createTempFile(\textcolor{stringliteral}{"{}testFile11"{}},\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ FileWriter\ writer\ =\ \textcolor{keyword}{new}\ FileWriter(testFile11);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ writer.write(\textcolor{stringliteral}{"{}CPL\(\backslash\)n3\(\backslash\)nDemocratic,\ Republican,\ New\ Wave\(\backslash\)nFoster,\ Volz,\ Pike\(\backslash\)nGreen,\ Xu,\ Wang\(\backslash\)nJacks,\ Rosen\(\backslash\)n3\(\backslash\)n8"{}});}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ writer.close();}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ the\ method\ being\ tested}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ fileSystem.readFile(testFile11);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stores\ candidates\ from\ all\ parties}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ List<List<String>>\ expectedCandidatesList\ =\ Arrays.asList(}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ List\ of\ candidates\ from\ each\ party}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(\textcolor{stringliteral}{"{}Foster,\ Volz,\ Pike"{}}),}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(\textcolor{stringliteral}{"{}Green,\ Xu,\ Wang"{}}),}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(\textcolor{stringliteral}{"{}Jacks,\ Rosen"{}})}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ election\ information\ were\ read\ correctly\ from\ testFile12\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}CPL"{}},\ fileSystem.electionType);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ assertEquals(3,\ fileSystem.numOfCandidates);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ assertEquals(Arrays.asList(\textcolor{stringliteral}{"{}Democratic"{}},\ \textcolor{stringliteral}{"{}Republican"{}},\ \textcolor{stringliteral}{"{}New\ Wave"{}}),\ fileSystem.candidates);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ assertEquals(expectedCandidatesList,\ fileSystem.candidatesList);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ assertEquals(3,\ fileSystem.numOfSeats);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ assertEquals(8,\ fileSystem.numOfVotes);}
+\DoxyCodeLine{00139\ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ @Test}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ readFile()\ reads\ and\ returns\ correct\ information\ based\ on\ election\ file}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test12\_readFile()\ \textcolor{keywordflow}{throws}\ IOException\{}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ temporary\ csv\ fie\ containing\ election\ information\ }}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ File\ testFile12\ =\ File.createTempFile(\textcolor{stringliteral}{"{}testFile12"{}},\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ FileWriter\ writer\ =\ \textcolor{keyword}{new}\ FileWriter(testFile12);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ writer.write(\textcolor{stringliteral}{"{}IR\(\backslash\)n4\(\backslash\)nRosen\ (D),\ Kleinberg\ (R),\ Chou\ (I),\ Royce\ (L)\(\backslash\)n8"{}});}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ writer.close();}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ the\ method\ being\ tested}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ fileSystem.readFile(testFile12);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ that\ election\ information\ were\ read\ correctly\ from\ testFile12\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}IR"{}},\ fileSystem.electionType);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ assertEquals(4,\ fileSystem.numOfCandidates);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ assertEquals(Arrays.asList(\textcolor{stringliteral}{"{}Rosen\ (D)"{}},\ \textcolor{stringliteral}{"{}Kleinberg\ (R)"{}},\ \textcolor{stringliteral}{"{}Chou\ (I)"{}},\ \textcolor{stringliteral}{"{}Royce\ (L)"{}}),\ fileSystem.candidates);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ assertEquals(8,\ fileSystem.numOfVotes);}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ }
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ @Test\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ openFile()\ checks\ the\ file\ format\ and\ then\ reads\ file}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test13\_openFile()\{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ File\ testFile13\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}Project2/testing/CPL\_18-\/3-\/2023.csv"{}});}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ file\ format\ is\ True}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ fileSystem.openFile(testFile13);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ assertTrue(fileSystem.checkFileFormat(testFile13));}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ boolean}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ functionWasRun\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ readFile()\ is\ called\ using\ try\ and\ catch\ }}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fileSystem.readFile(testFile13);\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ functionWasRun\ =\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ assertTrue(functionWasRun);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ @Test\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//\ This\ test\ checks\ that\ openFile()\ checks\ the\ file\ format\ and\ then\ reads\ file}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ test14\_openFile()\{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ File\ testFile14\ =\ \textcolor{keyword}{new}\ File(\textcolor{stringliteral}{"{}Project1/testing/CPL\_18-\/3-\/2023.pdf"{}});}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ fileSystem.openFile(testFile14);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ assertFalse(fileSystem.checkFileFormat(testFile14));}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ ReadFile()\ function\ was\ run\ }}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ functionWasRun\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ fileSystem.readFile(testFile14);\ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{\ functionWasRun\ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ assertFalse(functionWasRun);}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ }
+
+\end{DoxyCode}

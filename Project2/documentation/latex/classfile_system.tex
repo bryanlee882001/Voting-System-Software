@@ -1,0 +1,132 @@
+\doxysection{file\+System Class Reference}
+\label{classfile_system}\index{fileSystem@{fileSystem}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ file\+System} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \textbf{ file\+System\+Read} ()
+\item 
+static void \textbf{ open\+File} (File file\+Name)
+\item 
+static boolean \textbf{ check\+File\+Format} (File file\+Name)
+\item 
+static void \textbf{ read\+File} (File file\+Name)
+\item 
+static String \textbf{ get\+File\+Extension} (File full\+Name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxyref{file\+System}{p.}{classfile_system} program implements functions that are related to perform file handling within the voting system software.
+
+\begin{DoxyAuthor}{Author}
+Bryan Yen Sheng Lee 
+
+Cedric Tan Yee Shuen 
+
+Sherryl Ooi Shi Tyng 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 @ since 2023-\/03-\/19 
+\end{DoxyVersion}
+
+
+Definition at line \textbf{ 16} of file \textbf{ file\+System.\+java}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classfile_system_aebc3736bc6ce1e573df22c3296b79984}} 
+\index{fileSystem@{fileSystem}!fileSystem@{fileSystem}}
+\index{fileSystem@{fileSystem}!fileSystem@{fileSystem}}
+\doxysubsubsection{fileSystem()}
+{\footnotesize\ttfamily file\+System.\+file\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A constructor of the \doxyref{file\+System}{p.}{classfile_system} class that takes in no parameter and will open the selected files. It displays a message indicating if the file can be opened. 
+
+Definition at line \textbf{ 34} of file \textbf{ file\+System.\+java}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classfile_system_a270ccb82a9e47e2920af6ecf254833d0}} 
+\index{fileSystem@{fileSystem}!checkFileFormat@{checkFileFormat}}
+\index{checkFileFormat@{checkFileFormat}!fileSystem@{fileSystem}}
+\doxysubsubsection{checkFileFormat()}
+{\footnotesize\ttfamily static boolean file\+System.\+check\+File\+Format (\begin{DoxyParamCaption}\item[{File}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function of the \doxyref{file\+System}{p.}{classfile_system} class that reads in a file type and checks if the file format is correct. 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ a file type indicating the file name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean indicating if file format is correct 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 87} of file \textbf{ file\+System.\+java}.
+
+\mbox{\label{classfile_system_a09a8727981ec97c2e5c7061eb0455ef5}} 
+\index{fileSystem@{fileSystem}!fileSystemRead@{fileSystemRead}}
+\index{fileSystemRead@{fileSystemRead}!fileSystem@{fileSystem}}
+\doxysubsubsection{fileSystemRead()}
+{\footnotesize\ttfamily static void file\+System.\+file\+System\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \textbf{ 44} of file \textbf{ file\+System.\+java}.
+
+\mbox{\label{classfile_system_a06ecb2094eef494482f4eeea10091469}} 
+\index{fileSystem@{fileSystem}!getFileExtension@{getFileExtension}}
+\index{getFileExtension@{getFileExtension}!fileSystem@{fileSystem}}
+\doxysubsubsection{getFileExtension()}
+{\footnotesize\ttfamily static String file\+System.\+get\+File\+Extension (\begin{DoxyParamCaption}\item[{File}]{full\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function that takes in a file type and gets the file extension 
+\begin{DoxyParams}{Parameters}
+{\em full\+Name} & -\/ a file type indicating the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string indicating file type after \char`\"{}.\char`\"{} in file name 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 242} of file \textbf{ file\+System.\+java}.
+
+\mbox{\label{classfile_system_ac6ea42f99bf8cb26f75e3ae576c4dabe}} 
+\index{fileSystem@{fileSystem}!openFile@{openFile}}
+\index{openFile@{openFile}!fileSystem@{fileSystem}}
+\doxysubsubsection{openFile()}
+{\footnotesize\ttfamily static void file\+System.\+open\+File (\begin{DoxyParamCaption}\item[{File}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function of the \doxyref{file\+System}{p.}{classfile_system} class that reads in a file type and opens the file if the file format is correct. It displays a message indicating if the file can be opened. 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ a file type indicating the file name ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 67} of file \textbf{ file\+System.\+java}.
+
+\mbox{\label{classfile_system_a596347fb5fc592b59d2343190792ff9c}} 
+\index{fileSystem@{fileSystem}!readFile@{readFile}}
+\index{readFile@{readFile}!fileSystem@{fileSystem}}
+\doxysubsubsection{readFile()}
+{\footnotesize\ttfamily static void file\+System.\+read\+File (\begin{DoxyParamCaption}\item[{File}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A function of the \doxyref{file\+System}{p.}{classfile_system} class that takes in a file type and reads the CSV file starting from the first line to indicate election type. 
+
+Definition at line \textbf{ 105} of file \textbf{ file\+System.\+java}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/file\+System.\+java\end{DoxyCompactItemize}

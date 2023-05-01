@@ -1,0 +1,120 @@
+\doxysection{rankings.\+java}
+\label{rankings_8java_source}\index{src/rankings.java@{src/rankings.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ java.lang.Math;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ \textcolor{keyword}{import}\ java.util.Map.*;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }rankings\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ A\ Linked\ Hash\ Map\ to\ store\ rankings\ of\ each\ candidate}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ Map<String,\ List<Integer>>\ ranking\ =\ \textcolor{keyword}{new}\ LinkedHashMap<>();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ An\ array\ list\ to\ store\ ??}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ List<Map<String,\ List<Integer>>>\ displayList\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}\ rankings\ ()\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ countBallot\ ballotCount\ =\ \textcolor{keyword}{new}\ countBallot();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ checkMajority(ballotCount.ballotWithName);}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}\ Map<String,\ List<Integer>>\ checkRanking\ (Map<String,\ List<Integer>>\ ballotWithName)\ \{}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entryList\ =\ \textcolor{keyword}{new}\ ArrayList<>(ballotWithName.entrySet());}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sort\ the\ entryList\ in\ descending\ order\ by\ second\ value\ in\ each\ list}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ Collections.sort(entryList,\ Comparator.comparingInt((Map.Entry<String,\ List<Integer>>\ e)\ -\/>\ e.getValue().get(1)).reversed());}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ LinkedHashMap\ with\ the\ sorted\ entries}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Map.Entry<String,\ List<Integer>>\ entry\ :\ entryList)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ranking.put(entry.getKey(),\ entry.getValue());}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ sorted\ map}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ranking;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ election\ type\ is\ IR}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entryList\ =\ \textcolor{keyword}{new}\ ArrayList<>(ballotWithName.entrySet());}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sort\ the\ entryList\ in\ descending\ order\ by\ second\ value\ in\ each\ list}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ Collections.sort(entryList,\ Comparator.comparingInt((Map.Entry<String,\ List<Integer>>\ e)\ -\/>\ e.getValue().get(1)).reversed());}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ LinkedHashMap\ with\ the\ sorted\ entries}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Map.Entry<String,\ List<Integer>>\ entry\ :\ entryList)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ranking.put(entry.getKey(),\ entry.getValue());}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ sorted\ map}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ranking;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Displays\ error\ message\ if\ an\ error\ is\ detected}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ranking;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ checkMajority\ (Map<String,\ List<Integer>>\ ballotWithName)\ \{}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ if\ election\ type\ is\ CPL}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ ranking\ =\ checkRanking(ballotWithName);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ if\ election\ type\ is\ IR}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ majority\ =\ (int)\ fileSystem.numOfVotes\ *\ 50\ /\ 100;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ ranking\ =\ checkRanking(ballotWithName);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ Map.Entry<String,\ List<Integer>>entry\ =\ ranking.entrySet().iterator().next();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ initialRank\ =\ 1;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ While\ there\ is\ no\ majority\ }}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(entry.getValue().get(1)\ <\ majority)\ \{}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ displayList.add(\textcolor{keyword}{new}\ LinkedHashMap<>(ranking));}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Entry<String,\ List<Integer>>>\ entryList\ =\ \textcolor{keyword}{new}\ ArrayList<Map.Entry<String,\ List<Integer>>>(ranking.entrySet());}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Entry<String,\ List<Integer>>\ lastEntry\ =\ entryList.get(entryList.size()\ -\/\ 1);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Integer>\ subList\ =\ lastEntry.getValue();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subList.set(1,\ 0);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ranking.put(lastEntry.getKey(),\ subList);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ranking.remove(lastEntry.getKey());}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Redistribute\ votes\ }}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<List<Integer>>\ checkBallot\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ checkBallot\ =\ fileSystem.ballot;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ check\ =\ fileSystem.candidates.indexOf(lastEntry.getKey());}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfVotes;\ i++)\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.ballot.get(i).get(check)\ ==\ initialRank)\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ fileSystem.numOfCandidates;\ j++)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.ballot.get(i).get(j)\ ==\ initialRank+1)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Integer>\ subBallotList\ =\ ranking.get(fileSystem.candidates.get(j));}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ oldValue\ =\ subBallotList.get(1);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldValue++;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subBallotList.set(1,\ oldValue);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ranking.put(fileSystem.candidates.get(j),\ subBallotList);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ranking\ =\ checkRanking(ranking);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ entry\ =\ ranking.entrySet().iterator().next();}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ displayList.add(\textcolor{keyword}{new}\ LinkedHashMap<>(ranking));}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Displays\ error\ message\ if\ an\ error\ is\ detected}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}The\ election\ type\ is\ not\ recognized."{}},\textcolor{stringliteral}{"{}ERROR\ MESSAGE"{}},JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,97 @@
+\doxysection{final\+Ranking Class Reference}
+\label{classfinal_ranking}\index{finalRanking@{finalRanking}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ final\+Ranking} ()
+\item 
+Map$<$ String, List$<$ Integer $>$ $>$ \textbf{ check\+For\+Tie} ()
+\item 
+int \textbf{ fair\+Coin\+Toss} ()
+\item 
+int \textbf{ pool\+Coin\+Toss} (int range)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxyref{final\+Ranking}{p.}{classfinal_ranking} program implements functions that are related to determine the final ranking of the candidates/parties of the election and perform check for tie and flip a coin toss if necessary to determine the winner through an unbiased method.
+
+\begin{DoxyAuthor}{Author}
+Bryan Yen Sheng Lee 
+
+Cedric Tan Yee Shuen 
+
+Sherryl Ooi Shi Tyng 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 @ since 2023-\/03-\/19 
+\end{DoxyVersion}
+
+
+Definition at line \textbf{ 17} of file \textbf{ final\+Ranking.\+java}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classfinal_ranking_a475d7408bdeeb0a559f7cf94c4695c24}} 
+\index{finalRanking@{finalRanking}!finalRanking@{finalRanking}}
+\index{finalRanking@{finalRanking}!finalRanking@{finalRanking}}
+\doxysubsubsection{finalRanking()}
+{\footnotesize\ttfamily final\+Ranking.\+final\+Ranking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A constructor of the \doxyref{final\+Ranking}{p.}{classfinal_ranking} class that takes in no parameter and will checks if there is a tie. 
+
+Definition at line \textbf{ 25} of file \textbf{ final\+Ranking.\+java}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classfinal_ranking_a7d9c4b8f3536e1d511aa0e81bbf01b05}} 
+\index{finalRanking@{finalRanking}!checkForTie@{checkForTie}}
+\index{checkForTie@{checkForTie}!finalRanking@{finalRanking}}
+\doxysubsubsection{checkForTie()}
+{\footnotesize\ttfamily Map$<$ String, List$<$ Integer $>$ $>$ final\+Ranking.\+check\+For\+Tie (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A function that checks for tie and prompts users if they want to perform a coin toss. Performs a coin toss based on election type if there is a tie. \begin{DoxyReturn}{Returns}
+boolean indicating if there is a tie 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 34} of file \textbf{ final\+Ranking.\+java}.
+
+\mbox{\label{classfinal_ranking_a8fb744fe28061c7b4ecee6fc45b05dcb}} 
+\index{finalRanking@{finalRanking}!fairCoinToss@{fairCoinToss}}
+\index{fairCoinToss@{fairCoinToss}!finalRanking@{finalRanking}}
+\doxysubsubsection{fairCoinToss()}
+{\footnotesize\ttfamily int final\+Ranking.\+fair\+Coin\+Toss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A function that performs fair coin toss if there is a tie between two parties or candidates. \begin{DoxyReturn}{Returns}
+results 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 157} of file \textbf{ final\+Ranking.\+java}.
+
+\mbox{\label{classfinal_ranking_af9fa5278ce265079236188daa6e9a8c9}} 
+\index{finalRanking@{finalRanking}!poolCoinToss@{poolCoinToss}}
+\index{poolCoinToss@{poolCoinToss}!finalRanking@{finalRanking}}
+\doxysubsubsection{poolCoinToss()}
+{\footnotesize\ttfamily int final\+Ranking.\+pool\+Coin\+Toss (\begin{DoxyParamCaption}\item[{int}]{range }\end{DoxyParamCaption})}
+
+A function that performs pool coin toss if there is a tie between parties or candidates based on the range. 
+\begin{DoxyParams}{Parameters}
+{\em range} & indicating the number of parties/ candidates with the same number of votes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer indicating results 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 181} of file \textbf{ final\+Ranking.\+java}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/final\+Ranking.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,160 @@
+\doxysection{display\+Results.\+java}
+\label{display_results_8java_source}\index{src/displayResults.java@{src/displayResults.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{import}\ java.io.*;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{import}\ java.util.*;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }displayResults\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}\ displayResults\ ()\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ finalRanking\ rank\ =\ \textcolor{keyword}{new}\ finalRanking();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ showResults();}}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ generateAuditFile\ ()\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ JFrame\ to\ display\ information}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ JFrame\ parentFrame\ =\ \textcolor{keyword}{new}\ JFrame();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ JFileChooser\ fileChooser\ =\ \textcolor{keyword}{new}\ JFileChooser();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ fileChooser.setDialogTitle(\textcolor{stringliteral}{"{}Save\ audit\ file"{}});}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ userSelection\ =\ fileChooser.showSaveDialog(parentFrame);}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Checks\ whether\ approve\ (yes,\ ok)\ is\ chosen}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (userSelection\ ==\ JFileChooser.APPROVE\_OPTION)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ File\ outputFile\ =\ fileChooser.getSelectedFile();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}Save\ as\ file:\ "{}}\ +\ outputFile.getAbsolutePath());}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ output\ file}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outputFile.createNewFile();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PrintWriter\ output\ =\ \textcolor{keyword}{new}\ PrintWriter(outputFile);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StringBuffer\ csvData\ =\ \textcolor{keyword}{new}\ StringBuffer(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Election\ type:\ "{}}\ +\ fileSystem.electionType\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Closed\ Party\ Listing\ (CPL)}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ election\ information\ into\ the\ audit\ file}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Number\ of\ Parties:\ "{}}\ +\ fileSystem.numOfCandidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Parties\ joined\ election:\ "{}}\ +\ fileSystem.candidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Candidates\ of\ party\ "{}}\ +\ fileSystem.candidates.get(i)\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ fileSystem.candidatesList.get(i)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Total\ seats\ elected:\ "{}}\ +\ fileSystem.numOfSeats\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Total\ number\ of\ voters:\ "{}}\ +\ fileSystem.numOfVotes\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ ranking\ for\ each\ candidate\ into\ GUI}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.entrySet());}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<String>\ keys\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.keySet());}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(entries.get(i).getKey()\ +\ \textcolor{stringliteral}{"{}\ is\ rank\ "{}}\ +\ (keys.indexOf(entries.get(i).getKey())\ +\ 1)\ +\ \textcolor{stringliteral}{"{}.\(\backslash\)n"{}});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}The\ final\ winners\ of\ the\ election\ are\ parties:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ final\ winners'\ ranking\ into\ the\ GUI}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries2\ =\ \textcolor{keyword}{new}\ ArrayList<>(finalRanking.finalRanking.entrySet());}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<String>\ keys2\ =\ \textcolor{keyword}{new}\ ArrayList<>(finalRanking.finalRanking.keySet());}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfSeats;\ i++)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(entries2.get(i).getKey()\ +\ \textcolor{stringliteral}{"{}\ is\ rank\ "{}}\ +\ (keys2.indexOf(entries2.get(i).getKey())\ +\ 1)\ +\ \textcolor{stringliteral}{"{}.\(\backslash\)n"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Instant\ Runoff\ Voting\ (IR)}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ election\ information\ into\ the\ audit\ file}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Number\ of\ Candidates:\ "{}}\ +\ fileSystem.numOfCandidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Candidates\ joined\ election:\ "{}}\ +\ fileSystem.candidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}Total\ number\ of\ voters:\ "{}}\ +\ fileSystem.numOfVotes\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ the\ final\ winner\ and\ displays\ the\ results\ below\ the\ final\ winner}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.entrySet());}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}The\ final\ winner\ of\ the\ election\ is\ candidate\ "{}}\ \ +\ entries.get(0).getKey()\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(\textcolor{stringliteral}{"{}\(\backslash\)nThe\ results\ are\ as\ below:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rankings.displayList.size();\ i++)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvData.append(rankings.displayList.get(i)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.write(csvData.toString());}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.close();}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ showResults\ ()\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GUI\ interface\ to\ prompt\ user\ to\ choose\ whether\ to\ generate\ an\ audit\ file}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ yesOrNo\ =\ JOptionPane.showConfirmDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Do\ you\ want\ to\ generate\ Audit\ File?"{}},\textcolor{stringliteral}{"{}Generate\ Audit\ File"{}},JOptionPane.YES\_NO\_OPTION);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ user\ chose\ YES\ to\ generate\ an\ audit\ file}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(yesOrNo\ ==\ JOptionPane.YES\_OPTION)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ generateAuditFile();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ JFrame\ to\ display\ information\ }}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ JFrame\ frame\ =\ \textcolor{keyword}{new}\ JFrame\ (\textcolor{stringliteral}{"{}Final\ Results"{}});}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ frame.setDefaultCloseOperation(JFrame.EXIT\_ON\_CLOSE);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ frame.setSize(800,\ 800);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ JTextArea\ textArea\ \ =\ \textcolor{keyword}{new}\ JTextArea();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adds\ the\ election\ type\ onto\ the\ first\ line\ of\ the\ JFrame}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Election\ type:\ "{}}\ +\ fileSystem.electionType\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Closed\ Party\ Listing\ (CPL)}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}CPL"{}}))\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ election\ information\ into\ the\ GUI}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Number\ of\ Parties:\ "{}}\ +\ fileSystem.numOfCandidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Parties\ joined\ election:\ "{}}\ +\ fileSystem.candidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Candidates\ of\ party\ "{}}\ +\ fileSystem.candidates.get(i)\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ fileSystem.candidatesList.get(i)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Total\ seats\ elected:\ "{}}\ +\ fileSystem.numOfSeats\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Total\ number\ of\ voters:\ "{}}\ +\ fileSystem.numOfVotes\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ final\ winners\ into\ the\ GUI\ }}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.entrySet());}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ List<String>\ keys\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.keySet());}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfCandidates;\ i++)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(entries.get(i).getKey()\ +\ \textcolor{stringliteral}{"{}\ is\ rank\ "{}}\ +\ (keys.indexOf(entries.get(i).getKey())\ +\ 1)\ +\ \textcolor{stringliteral}{"{}.\(\backslash\)n"{}});}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}The\ final\ winners\ of\ the\ election\ are\ parties:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ final\ winners'\ ranking\ into\ the\ GUI}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries2\ =\ \textcolor{keyword}{new}\ ArrayList<>(finalRanking.finalRanking.entrySet());}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ List<String>\ keys2\ =\ \textcolor{keyword}{new}\ ArrayList<>(finalRanking.finalRanking.keySet());}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileSystem.numOfSeats;\ i++)\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(entries2.get(i).getKey()\ +\ \textcolor{stringliteral}{"{}\ is\ rank\ "{}}\ +\ (keys2.indexOf(entries2.get(i).getKey())\ +\ 1)\ +\ \textcolor{stringliteral}{"{}.\(\backslash\)n"{}});}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ election\ type\ is\ Instant\ Runoff\ Voting\ (IR)}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(fileSystem.electionType.equals(\textcolor{stringliteral}{"{}IR"{}}))\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ election\ information\ into\ the\ GUI}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Number\ of\ Candidates:\ "{}}\ +\ fileSystem.numOfCandidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Candidates\ joined\ election:\ "{}}\ +\ fileSystem.candidates\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}Total\ number\ of\ voters:\ "{}}\ +\ fileSystem.numOfVotes\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ the\ final\ winner\ and\ displays\ the\ results\ below\ the\ final\ winner}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ List<Map.Entry<String,\ List<Integer>>>\ entries\ =\ \textcolor{keyword}{new}\ ArrayList<>(rankings.ranking.entrySet());}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}The\ final\ winner\ of\ the\ election\ is\ candidate\ "{}}\ \ +\ entries.get(0).getKey()\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(\textcolor{stringliteral}{"{}\(\backslash\)nThe\ results\ are\ as\ below:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rankings.displayList.size();\ i++)\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textArea.append(rankings.displayList.get(i)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ modifications\ to\ JFrame}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ frame.add(textArea);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ textArea.setEditable(\textcolor{keyword}{false});}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ frame.setLocationRelativeTo(\textcolor{keyword}{null});}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ frame.setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \}}
+
+\end{DoxyCode}

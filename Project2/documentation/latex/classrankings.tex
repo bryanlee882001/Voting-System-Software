@@ -1,0 +1,86 @@
+\doxysection{rankings Class Reference}
+\label{classrankings}\index{rankings@{rankings}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ rankings} ()
+\item 
+Map$<$ String, List$<$ Integer $>$ $>$ \textbf{ check\+Ranking} (Map$<$ String, List$<$ Integer $>$ $>$ ballot\+With\+Name)
+\item 
+void \textbf{ check\+Majority} (Map$<$ String, List$<$ Integer $>$ $>$ ballot\+With\+Name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The rankings program implements functions that are related to determine the ranking of the candidates/parties of the election as well as check whether there is a majority to determine the winner of the election.
+
+\begin{DoxyAuthor}{Author}
+Bryan Yen Sheng Lee 
+
+Cedric Tan Yee Shuen 
+
+Sherryl Ooi Shi Tyng 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 @ since 2023-\/03-\/19 
+\end{DoxyVersion}
+
+
+Definition at line \textbf{ 18} of file \textbf{ rankings.\+java}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classrankings_ab679ae5f3ee458f971b8f754e86531cb}} 
+\index{rankings@{rankings}!rankings@{rankings}}
+\index{rankings@{rankings}!rankings@{rankings}}
+\doxysubsubsection{rankings()}
+{\footnotesize\ttfamily rankings.\+rankings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A constructor of the rankings class that takes in no parameter and counts the ballot. The rankings are then determined. 
+
+Definition at line \textbf{ 30} of file \textbf{ rankings.\+java}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classrankings_ab091e7773820e3c3f07f3b1059ffc4c7}} 
+\index{rankings@{rankings}!checkMajority@{checkMajority}}
+\index{checkMajority@{checkMajority}!rankings@{rankings}}
+\doxysubsubsection{checkMajority()}
+{\footnotesize\ttfamily void rankings.\+check\+Majority (\begin{DoxyParamCaption}\item[{Map$<$ String, List$<$ Integer $>$ $>$}]{ballot\+With\+Name }\end{DoxyParamCaption})}
+
+A function that reads the total\+Ballots array and check if there is a majority among the candidates. 
+\begin{DoxyParams}{Parameters}
+{\em total\+Ballots} & — a 2D array indicating the number of votes per candidate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 88} of file \textbf{ rankings.\+java}.
+
+\mbox{\label{classrankings_a93014cb1d1fe9d3735228ee1b84a764d}} 
+\index{rankings@{rankings}!checkRanking@{checkRanking}}
+\index{checkRanking@{checkRanking}!rankings@{rankings}}
+\doxysubsubsection{checkRanking()}
+{\footnotesize\ttfamily Map$<$ String, List$<$ Integer $>$ $>$ rankings.\+check\+Ranking (\begin{DoxyParamCaption}\item[{Map$<$ String, List$<$ Integer $>$ $>$}]{ballot\+With\+Name }\end{DoxyParamCaption})}
+
+A function that reads the new\+Ballots array and determines the ranking for each candidate based on number of votes 
+\begin{DoxyParams}{Parameters}
+{\em new\+Ballots} & — a 2D array indicating the number of votes for each candidate \\
+\hline
+{\em initial\+Rank} & -\/ an integer indicating the initial rank of the candidate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer array indicating candidates\textquotesingle{} rankings 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 42} of file \textbf{ rankings.\+java}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/rankings.\+java\end{DoxyCompactItemize}
