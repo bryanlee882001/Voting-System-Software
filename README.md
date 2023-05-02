@@ -1,11 +1,14 @@
 # Voting System Software
-<h1>Authors: <h1/>
-<h3>Bryan Yen Sheng Lee<h3/>
-<h3>Cedric Tan Yee Shuen<h3/>
-<h3>Sherryl Ooi Shi Tyng<h3/>
-[^1]
+Authors: <h1 />
+Bryan Leebr />
+Cedric Tan <br />
+Sherryl Ooi <br />
+  
+ 
+[Instructions]
 
-<h1>Instructions</h1>
+[Instructions]
+<h1>Instructions  </h1>
 Instructions to run the program:
 1. Open terminal and javac all the functions including: <br />
 - fileSystem.java
@@ -21,7 +24,7 @@ Instructions to run the program:
 
 4. The system will run the program and count the rankings for the election. The user can choose to download the audit file and/or just view the results at the final GUI.
 
-  [^1]
+  
   
   
   
