@@ -1,8 +1,8 @@
 # Voting System Software
 <h1>Authors: <h1/>
-Bryan Yen Sheng Lee, lee03627 <br />
-Cedric Tan Yee Shuen, tan00205 <br />
-Sherryl Ooi Shi Tyng, ooi00004 <br />
+<h3>Bryan Yen Sheng Lee, lee03627 <h3/>
+<h3>Cedric Tan Yee Shuen, tan00205 <h3/>
+<h3>Sherryl Ooi Shi Tyng, ooi00004 <h3/>
 
 
 <h1>Instructions</h1>
