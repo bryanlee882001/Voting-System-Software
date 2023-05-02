@@ -1,8 +1,8 @@
 # Voting System Software
 # Authors: <br />
-<h3>Bryan Lee <h3 />
-<h3>Cedric Tan <h3 />
-<h3>Sherryl Ooi <h3 />
+Bryan Lee <br />
+Cedric Tan <br />
+Sherryl Ooi <br />
 
 Voting System Software is capable of performing two types of elections — Instant Runoff Voting (Plurality/Majority type) and Party List Voting using Closed Party List (CPL). This software allows users to input multiple .csv files containing election information and ballots. The voting system processes the inputted files, counts the ballots, breaks tie, determines the winner, and displays the final results. Furthermore, users have the option to generate an election audit file at the end of the program. 
 
