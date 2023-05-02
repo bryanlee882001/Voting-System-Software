@@ -4,7 +4,7 @@ Bryan Yen Sheng Lee, lee03627 <br />
 Cedric Tan Yee Shuen, tan00205 <br />
 Sherryl Ooi Shi Tyng, ooi00004 <br />
 
-# Instructions
+<h3>Instructions</h3>
 Instructions to run the program:
 1. Open terminal and javac all the functions including: <br />
 - fileSystem.java
