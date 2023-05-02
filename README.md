@@ -21,6 +21,11 @@ Instructions to run the program:
 
 4. The system will run the program and count the rankings for the election. The user can choose to download the audit file and/or just view the results at the final GUI.
 
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
   
   
   
