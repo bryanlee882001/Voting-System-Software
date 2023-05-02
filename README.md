@@ -1,13 +1,10 @@
 # Voting System Software
-Authors: <h1 />
-Bryan Leebr />
+<h1> Authors: <h1 />
+Bryan Lee <br />
 Cedric Tan <br />
 Sherryl Ooi <br />
   
- 
-[Instructions]
 
-[Instructions]
 <h1>Instructions  </h1>
 Instructions to run the program:
 1. Open terminal and javac all the functions including: <br />
