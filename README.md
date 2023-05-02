@@ -3,7 +3,8 @@ Authors: <br />
 Bryan Lee <br />
 Cedric Tan <br />
 Sherryl Ooi <br />
-  
+ 
+<h1> Introduction </h1>
 
 <h1>Instructions  </h1>
 Instructions to run the program:
