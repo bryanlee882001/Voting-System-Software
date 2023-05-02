@@ -28,6 +28,19 @@ User can select any .csv files that include all the ballots informations. Or the
 <h1> Introduction </h1>
 There are numerous types of voting algorithms and in the United States, we typically use plurality voting where each voter is allowed to vote for only one candidate, and the candidate who polls the most votes is elected. It is rare for an election to be tied but if that occurs, there is typically a runoff between the tied candidates. For example, there have been three cases in history where there was a tie in the Electoral College for a presidential election. The House of Representatives then decided who was president by voting. For small sized, local elections a run-off may occur or even a coin flip can decide the outcome in some cases. Much research has been performed on voting theory and some believe that the other types of voting are better than our style of voting.
 
+We created a voting system that is capable of performing two types of elections: 
+
+# 1. Instant Runoff Voting (IRV) 
+Instant Runoff Voting is also known as "majority preferential voting." It is used in elections that allows voters to rank candidates in order of preference. In an IRV election, voters are asked to rank the candidates from their favorite to least favorite. If a candidate receives a majority of first-choice votes, they are declared the winner. However, if no candidate receives a majority of first-choice votes, the candidate with the least number of first-choice votes is eliminated, and their votes are redistributed to the remaining candidates according to the second-choice preferences of those voters. This process continues until a candidate receives a majority of votes, and they are declared the winner. IRV is designed to ensure that the winning candidate has broad support from a majority of voters and can help to avoid vote-splitting and tactical voting. 
+
+# 2. Party List Voting using Closed Party List (CPL)
+A closed party list election is a type of electoral system in which voters cast their ballots for a political party rather than for individual candidates. Each party presents a list of candidates, and the number of seats that each party is awarded in the legislature is determined by the proportion of votes that the party receives. In a closed party list system, the order of the candidates on each party's list is predetermined by the party leadership, and voters have no say in the selection of individual candidates. The seats that are won by each party are then filled by the candidates on their list in the order that they appear. This system can help to ensure that the legislature reflects the overall preferences of the electorate, but it can also make it difficult for individual candidates to be elected based on their own merits, and can give a lot of power to the party leadership in determining who gets elected.
+
+
+
+
+
+
 
   
   
