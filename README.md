@@ -1,14 +1,12 @@
 # repo-Team4
+Authors: <br />
 Bryan Yen Sheng Lee, lee03627 <br />
 Cedric Tan Yee Shuen, tan00205 <br />
 Sherryl Ooi Shi Tyng, ooi00004 <br />
 
 
-Code, Documentation, Testing and BugList <br />
-Due March 26th, 2023 <br />
-
 Instructions to run the program:
-1. javac all the functions including<br />
+1. Open terminal and javac all the functions including: <br />
 - fileSystem.java
 - countBallot.java
 - rankings.java
