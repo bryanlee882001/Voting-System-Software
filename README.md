@@ -9,6 +9,7 @@ There are numerous types of voting algorithms and in the United States, we typic
 
 <h1>Instructions  </h1>
 Instructions to run the program:
+
 ```
 # Run in terminal
 cd Voting-System-Software
