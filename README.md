@@ -1,5 +1,5 @@
 # Voting System Software
-Authors: <br />
+# Authors: <br />
 Bryan Lee <br />
 Cedric Tan <br />
 Sherryl Ooi <br />
