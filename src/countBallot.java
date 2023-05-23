@@ -88,6 +88,13 @@ public class countBallot {
             }
         }
 
+
+
+
+        
+
+
+
         // If the election type is neither IR nor CPL 
         else {
             JOptionPane.showMessageDialog(null,"The election type is not recognized.","ERROR MESSAGE",JOptionPane.ERROR_MESSAGE);
